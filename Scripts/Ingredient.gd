@@ -6,20 +6,29 @@ var subs = [];
 var being_dragged = false
 
 func _ready():
-	pass
-
-func _init():
 	if GameData.ingredient_info.has(self.name):
 		subs.push_back(GameData.ingredient_info[self.name])
 	else:
-		print("Incorrectly names ingredient")
-		
-func process():
+		print("Incorrectly named ingredient")
+	self.connect("mouse_entered", DragDropController, "mouse_entered", [self])
+	self.connect("mouse_exited", DragDropController, "mouse_exited", [self])
+	self.connect("input_event", DragDropController, "input_event", [self])
+
+func _init():
 	pass
 
 func on_drag_start():
+	print("on_drag_start")
 	being_dragged = true
 
+func on_drag(candidates):
+	print("on_drag")
+#	var string = "Other candidates: "
+#	for i in range(candidates.size()):
+#		string += candidates[i].name + " "
+#	print(string)
+	 
+	
 func on_drop():
 	return false
 
