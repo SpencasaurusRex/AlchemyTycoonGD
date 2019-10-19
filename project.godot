@@ -9,25 +9,30 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "DragDropController",
+"language": "GDScript",
+"path": "res://Scripts/DragDropController.gd"
+}, {
 "base": "Sprite",
 "class": "Ingredient",
 "language": "GDScript",
-"path": "res://Scenes/Ingredient.gd"
-}, {
-"base": "Area2D",
-"class": "IngredientDrag",
-"language": "GDScript",
-"path": "res://Scenes/IngredientDrag.gd"
+"path": "res://Scripts/Ingredient.gd"
 } ]
 _global_script_class_icons={
-"Ingredient": "",
-"IngredientDrag": ""
+"DragDropController": "",
+"Ingredient": ""
 }
 
 [application]
 
 config/name="AlchemyTycoonGodot"
 run/main_scene="res://Scenes/World.tscn"
+
+[autoload]
+
+Attribute="*res://Scripts/Attribute.gd"
+GameData="*res://Scripts/GameData.gd"
 
 [display]
 

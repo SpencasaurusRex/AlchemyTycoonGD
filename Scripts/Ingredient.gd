@@ -2,21 +2,29 @@ extends Sprite
 
 class_name Ingredient
 
-
-enum Attribute { CharmingAura, DiseaseResistance, PerpetualHeat, LifeDrain, Spores, SealWounds, SoothingFragrance, Neutralize, Chilling, Vitalize, Fertilize, Grease }
 var subs = [];
-
+var being_dragged = false
 
 func _ready():
 	pass
 
+func _init():
+	if GameData.ingredient_info.has(self.name):
+		subs.push_back(GameData.ingredient_info[self.name])
+	else:
+		print("Incorrectly names ingredient")
+		
+func process():
+	pass
 
-func _init(subs):
-	self.subs = subs
+func on_drag_start():
+	being_dragged = true
+
+func on_drop():
+	return false
 
 
 class Sub:
-	
 	
 	var attrs = [];
 	var unlocked_attrs = [true, false, false];
